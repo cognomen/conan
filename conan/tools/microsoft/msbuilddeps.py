@@ -106,7 +106,9 @@ class MSBuildDeps(object):
         self._conanfile = conanfile
         self.configuration = conanfile.settings.build_type
         self.platform = {'x86': 'Win32',
-                         'x86_64': 'x64'}.get(str(conanfile.settings.arch))
+                         'x86_64': 'x64',
+                         'armv8': 'ARM64',
+                        }.get(str(conanfile.settings.arch))
         # ca_exclude section
         # TODO: Accept single strings, not lists
         self.exclude_code_analysis = self._conanfile.conf.get("tools.microsoft.msbuilddeps:exclude_code_analysis",
