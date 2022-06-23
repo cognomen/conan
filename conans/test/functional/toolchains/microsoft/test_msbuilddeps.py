@@ -705,6 +705,11 @@ def test_exclude_code_analysis(pattern, exclude_a, exclude_b):
 def test_build_vs_project_with_a_vs2017():
     check_build_vs_project_with_a("15")
 
+@pytest.mark.tool_visual_studio(version="16")
+@pytest.mark.tool_cmake
+@pytest.mark.skipif(platform.system() != "Windows", reason="Requires MSBuild")
+def test_build_vs_project_with_a_vs2019():
+    check_build_vs_project_with_a("16")
 
 @pytest.mark.tool_visual_studio(version="17")
 @pytest.mark.tool_cmake
